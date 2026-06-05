@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Austin Roof &amp; Insurance Position — Texas Choice Roofing</title>
+<meta name="description" content="See where a Class 4 impact-resistant roof puts you with your insurance carrier — and what your premiums have already cost you.">
+<link rel="preconnect" href="<https://fonts.googleapis.com>">
+<link rel="preconnect" href="<https://fonts.gstatic.com>" crossorigin>
+<link href="<https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Spline+Sans:wght@400;500;600;700&display=swap>" rel="stylesheet">
+<script src="<https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js>"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1a1814;
+  --ink-soft:#4a463e;
+  --muted:#8a8478;
+  --paper:#f4f1ea;
+  --paper-warm:#ece7dc;
+  --card:#fffdf8;
+  --line:#ddd6c8;
+  --brand:#1d3b2f;
+  --brand-light:#2f5544;
+  --gold:#b08328;
+  --gold-soft:#d4a94e;
+  --alert:#a8442a;
+  --green-good:#15803d;
+  --shadow:0 1px 2px rgba(26,24,20,.06),0 8px 24px rgba(26,24,20,.07);
+  --shadow-lg:0 2px 4px rgba(26,24,20,.08),0 20px 50px rgba(26,24,20,.12);
+  --f-display:'Fraunces',Georgia,serif;
+  --f-body:'Spline Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--f-body);color:var(--ink);background:var(--paper);line-height:1.55;
+  min-height:100vh;
+  background-image:radial-gradient(circle at 12% 8%,rgba(176,131,40,.05),transparent 42%),
+                   radial-gradient(circle at 88% 96%,rgba(29,59,47,.05),transparent 45%);
+}
+.wrap{max-width:680px;margin:0 auto;padding:0 1.1rem 4rem}
+header{
+  background:var(--brand);color:#f4f1ea;
+  padding:2.2rem 1.1rem 2.4rem;text-align:center;position:relative;overflow:hidden;
+}
+header::after{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 80% 20%,rgba(212,169,78,.14),transparent 50%);
+  pointer-events:none;
+}
+.brand-mark{
+  font-family:var(--f-body);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-soft);font-weight:600;margin-bottom:.9rem;position:relative;
+}
+header h1{
+  font-family:var(--f-display);font-weight:600;font-size:clamp(1.55rem,5vw,2.2rem);
+  line-height:1.12;letter-spacing:-.01em;max-width:16ch;margin:0 auto .65rem;position:relative;
+}
+header p{font-size:.94rem;color:rgba(244,241,234,.8);max-width:36ch;margin:0 auto;position:relative}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);padding:1.6rem 1.4rem;margin-top:-1.2rem;position:relative;z-index:2;
+}
+.card+.card{margin-top:1rem}
+.eyebrow{
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+  font-weight:700;margin-bottom:.35rem;
+}
+.card-h2{
+  font-family:var(--f-display);font-weight:600;font-size:1.25rem;letter-spacing:-.01em;
+  margin-bottom:1.1rem;color:var(--brand);
+}
+.field{margin-bottom:1.05rem}
+.field:last-child{margin-bottom:0}
+.field>label,.field>.field-label{
+  display:block;font-weight:600;font-size:.9rem;margin-bottom:.3rem;color:var(--ink);
+}
+.field .hint{font-size:.76rem;color:var(--muted);margin-top:.28rem;line-height:1.4}
+.req{color:var(--alert)}
+input[type=text],input[type=number],select{
+  width:100%;padding:.75rem .9rem;border:1.5px solid var(--line);border-radius:9px;
+  font-size:1rem;font-family:var(--f-body);background:#fff;color:var(--ink);
+  -webkit-text-fill-color:var(--ink);
+  transition:border-color .18s,box-shadow .18s;-webkit-appearance:none;appearance:none;
+}
+input:focus,select:focus{outline:none;border-color:var(--brand-light);box-shadow:0 0 0 3px rgba(47,85,68,.12)}
+input.err{border-color:var(--alert)!important}
+.pfx-wrap{position:relative}
+.pfx-wrap::before{
+  content:'$';position:absolute;left:.9rem;top:50%;transform:translateY(-50%);
+  color:var(--muted);font-size:1rem;pointer-events:none;z-index:1;
+}
+.pfx-wrap input{padding-left:1.65rem}
+select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='<http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8478' stroke-width='1.5' fill='none>' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 11px center;padding-right:30px;
+}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+@media(max-width:500px){.row2{grid-template-columns:1fr}}
+.share-wrap{
+  background:var(--paper-warm);border:1px solid var(--line);border-radius:10px;
+  padding:.95rem 1.05rem;margin-top:.25rem;
+}
+.share-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.55rem}
+.share-head .lbl{font-weight:600;font-size:.88rem}
+.share-head .val{font-family:var(--f-display);font-weight:600;font-size:1.1rem;color:var(--brand)}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:5px;
+  background:linear-gradient(90deg,var(--brand-light),var(--gold-soft));padding:0;border:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+  background:#fff;border:2.5px solid var(--brand);cursor:pointer;box-shadow:0 1px 5px rgba(0,0,0,.18);
+}
+input[type=range]::-moz-range-thumb{
+  width:20px;height:20px;border-radius:50%;background:#fff;border:2.5px solid var(--brand);cursor:pointer;
+}
+.presets{display:flex;gap:.45rem;margin-top:.65rem}
+.preset{
+  flex:1;padding:.4rem;font-size:.76rem;font-weight:600;
+  border:1.5px solid var(--line);background:#fff;border-radius:7px;
+  cursor:pointer;color:var(--ink-soft);transition:all .14s;font-family:var(--f-body);
+}
+.preset.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.zip-msg{display:none;font-size:.76rem;padding:5px 9px;border-radius:5px;margin-top:.3rem;line-height:1.4}
+.zip-msg.ok{background:#ECFDF5;border:1px solid #6EE7B7;color:#065F46;display:block}
+.zip-msg.out{background:#FFF3CD;border:1px solid #FFCD39;color:#856404;display:block}
+.zip-msg.err{background:#FEE2E2;border:1px solid #EF4444;color:#991B1B;display:block}
+.verdict{
+  background:var(--brand);color:#f4f1ea;border-radius:14px;padding:1.6rem 1.4rem;
+  text-align:center;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;margin-top:1rem;
+}
+.verdict::after{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 85% 15%,rgba(212,169,78,.16),transparent 55%);
+  pointer-events:none;
+}
+.verdict .eyebrow{color:var(--gold-soft)}
+.verdict-h{font-family:var(--f-display);color:#fff;font-weight:600;font-size:1.45rem;line-height:1.15;margin-bottom:.55rem;position:relative}
+.verdict-p{color:rgba(244,241,234,.82);font-size:.93rem;max-width:40ch;margin:0 auto;position:relative;line-height:1.55}
+.stat-big{text-align:center;padding:1.4rem .8rem}
+.stat-big .pre{font-size:.9rem;color:var(--ink-soft);margin-bottom:.28rem}
+.stat-big .num{
+  font-family:var(--f-display);font-weight:700;color:var(--brand);
+  font-size:clamp(2.2rem,8vw,3.1rem);line-height:1;letter-spacing:-.02em;
+}
+.stat-big .post{font-size:.84rem;color:var(--muted);margin-top:.45rem;max-width:40ch;margin-left:auto;margin-right:auto;line-height:1.45}
+.ledger{border-top:1px solid var(--line);margin-top:.3rem}
+.l-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:.8rem 0;border-bottom:1px solid var(--line);gap:.75rem;
+}
+.l-row:last-child{border-bottom:none}
+.l-k{font-size:.9rem;color:var(--ink-soft);flex:1}
+.l-k small{display:block;color:var(--muted);font-size:.75rem;margin-top:.12rem;line-height:1.35}
+.l-v{
+  font-family:var(--f-display);font-weight:600;font-size:1.12rem;
+  color:var(--brand);white-space:nowrap;padding-left:.5rem;text-align:right;
+}
+.l-v.range{font-size:.98rem}
+.l-v.savings{color:var(--green-good)}
+.l-v.na{font-family:var(--f-body);font-size:.82rem;color:var(--muted);font-weight:400}
+.l-divider{border-top:2px solid var(--line);margin:.2rem 0 0;padding:.8rem 0 0}
+.l-divider .l-k{font-weight:700;color:var(--ink)}
+.l-divider .l-v{font-size:1.2rem;color:var(--green-good)}
+.callout{
+  background:var(--paper-warm);border-left:3px solid var(--gold);border-radius:0 9px 9px 0;
+  padding:.9rem 1rem;margin-top:1rem;font-size:.88rem;color:var(--ink-soft);line-height:1.5;
+}
+.callout strong{color:var(--ink)}
+.carrier-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:.5rem}
+.carrier-tbl{width:100%;border-collapse:collapse;font-size:.82rem}
+.carrier-tbl th{
+  text-align:left;padding:6px 10px;font-size:.67rem;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--muted);border-bottom:2px solid var(--line);
+  background:var(--paper-warm);white-space:nowrap;
+}
+.carrier-tbl th:not(:first-child){text-align:right}
+.carrier-tbl td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.carrier-tbl tr:last-child td{border-bottom:none}
+.carrier-tbl td:not(:first-child){text-align:right}
+.carrier-tbl .sel td{background:#f0f7f3;font-weight:600;color:var(--brand)}
+.carrier-tbl .sel td:first-child::before{content:'▶ ';font-size:.6rem;color:var(--brand)}
+.disc-hi{color:var(--green-good);font-weight:600}
+.disc-lo{color:var(--muted)}
+.wind-val{color:#1d4ed8;font-weight:600}
+.cov-badge{border-radius:9px;padding:12px 14px;margin-bottom:12px}
+.cov-badge.good{background:#ECFDF5;border:1px solid #6EE7B7}
+.cov-badge.warn{background:#FFF3CD;border:1px solid #FFCD39}
+.cov-badge.danger{background:#FEE2E2;border:1px solid #EF4444}
+.cov-badge p{font-size:.86rem;line-height:1.55}
+.cov-badge strong{display:block;margin-bottom:3px;font-size:.9rem}
+.acv-tbl{width:100%;font-size:.83rem;border-collapse:collapse;margin-top:9px}
+.acv-tbl td{padding:6px 10px;vertical-align:top}
+.acv-tbl tr:nth-child(even) td{background:var(--paper-warm)}
+.acv-tbl .ak{color:var(--ink-soft);width:58%}
+.acv-tbl .av{text-align:right;font-weight:600}
+.acv-tbl .neg{color:#DC2626}
+.acv-tbl .pos{color:var(--green-good)}
+.acv-tbl .zero{color:#DC2626}
+.acv-div td{border-top:2px solid var(--line);padding-top:8px;font-weight:700}
+.protect-box{
+  background:var(--brand);color:#f4f1ea;border-radius:9px;padding:13px 15px;
+  margin-top:11px;display:flex;justify-content:space-between;align-items:center;gap:10px;
+}
+.protect-box .pb-label{font-size:.8rem;opacity:.85;line-height:1.35}
+.protect-box .pb-sub{font-size:.7rem;opacity:.6;margin-top:2px}
+.protect-box .pb-val{font-family:var(--f-display);font-size:1.3rem;font-weight:700;color:var(--gold-soft);white-space:nowrap}
+.chart-wrap{position:relative;height:260px}
+@media(max-width:480px){.chart-wrap{height:210px}}
+.note{font-size:.72rem;color:var(--muted);margin-top:.8rem;line-height:1.5;font-style:italic}
+.cta-center{text-align:center}
+.cta-center .card-h2{margin-bottom:.45rem}
+.cta-center p{color:var(--ink-soft);font-size:.92rem;margin-bottom:1.15rem;max-width:42ch;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;flex-direction:column;gap:.65rem}
+.btn{
+  width:100%;padding:1rem;border:none;border-radius:10px;cursor:pointer;
+  font-family:var(--f-body);font-size:1.05rem;font-weight:600;letter-spacing:.01em;
+  transition:transform .15s,box-shadow .15s,background .15s;text-decoration:none;display:block;text-align:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.15);
+}
+.btn:active{transform:scale(.98)}
+.btn-call{background:var(--gold);color:#fff;box-shadow:0 4px 14px rgba(176,131,40,.3)}
+.btn-call:hover{background:var(--gold-soft)}
+.btn-ghost{background:transparent;color:var(--brand);border:1.5px solid var(--line);box-shadow:none}
+.btn-ghost:hover{background:var(--paper-warm)}
+.copied{font-size:.82rem;color:var(--brand);font-weight:600;margin-top:.55rem;opacity:0;transition:opacity .25s;text-align:center}
+.copied.show{opacity:1}
+footer{max-width:680px;margin:0 auto;padding:1.4rem 1.4rem 0;text-align:center}
+.contact{font-family:var(--f-display);font-size:1rem;color:var(--brand);font-weight:600;margin-bottom:.2rem}
+.contact a{color:var(--brand);text-decoration:none}
+.contact-sub{font-size:.84rem;color:var(--muted);margin-bottom:1.2rem}
+.disclaimer{
+  font-size:.72rem;color:var(--muted);line-height:1.55;max-width:56ch;
+  margin:0 auto;border-top:1px solid var(--line);padding-top:1.1rem;
+}
+@media print{
+  body{background:white}
+  header{background:#1d3b2f;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card{box-shadow:none;border:1px solid #ccc;page-break-inside:avoid}
+  .verdict{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .btn,.cta-btns,.copied,.btn-ghost{display:none!important}
+  .chart-wrap{height:180px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand-mark">Texas Choice Roofing · Austin</div>
+  <h1>Where Do You Stand With Your Insurance?</h1>
+  <p>A Class 4 impact-resistant roof changes your position with every carrier. See what that means for your coverage and your premium.</p>
+</header>
+
+<div class="wrap">
+
+  <div class="card">
+    <div class="eyebrow">Your Home</div>
+    <div class="card-h2">A few quick numbers</div>
+
+    <div class="row2">
+      <div class="field">
+        <label for="homeValue">Home value <span class="req">*</span></label>
+        <div class="pfx-wrap"><input id="homeValue" type="number" inputmode="numeric" placeholder="450,000" min="50000" max="5000000"></div>
+        <div class="hint">Zillow estimate is fine.</div>
+      </div>
+      <div class="field">
+        <label for="premium">Annual premium <span class="req">*</span></label>
+        <div class="pfx-wrap"><input id="premium" type="number" inputmode="numeric" placeholder="4,200" min="500" max="40000"></div>
+        <div class="hint">On your declarations page.</div>
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <label for="roofAge">Roof age <span class="req">*</span> <span style="font-weight:400;font-size:.82rem">(years)</span></label>
+        <input id="roofAge" type="number" inputmode="numeric" placeholder="12" min="0" max="50">
+        <div class="hint">Best estimate is fine.</div>
+      </div>
+      <div class="field">
+        <label for="carrier">Insurance carrier</label>
+        <select id="carrier">
+          <option value="unknown" selected>Unknown / Other</option>
+          <option value="statefarm">State Farm</option>
+          <option value="allstate">Allstate</option>
+          <option value="farmers">Farmers</option>
+          <option value="tfb">Texas Farm Bureau</option>
+          <option value="usaa">USAA</option>
+          <option value="travelers">Travelers</option>
+          <option value="nationwide">Nationwide</option>
+          <option value="libertymutual">Liberty Mutual</option>
+          <option value="progressive">Progressive</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <label for="roofType">Current roof type</label>
+        <select id="roofType">
+          <option value="3tab">Standard 3-Tab Shingle</option>
+          <option value="arch" selected>Architectural Shingle</option>
+          <option value="class4">Class 4 Impact-Resistant</option>
+          <option value="unknown">Unknown</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="zip">ZIP code <span style="font-weight:400;font-size:.8rem">(optional)</span></label>
+        <input type="text" id="zip" maxlength="5" placeholder="78613" inputmode="numeric">
+        <div class="zip-msg" id="zipMsg"></div>
+      </div>
+    </div>
+
+    <div class="field" style="margin-top:.2rem">
+      <div class="field-label">Hail-driven share of your premium</div>
+      <div class="share-wrap">
+        <div class="share-head">
+          <span class="lbl">Hail / storm portion</span>
+          <span class="val" id="shareVal">55%</span>
+        </div>
+        <input id="share" type="range" min="35" max="65" value="55" step="5">
+        <div class="presets">
+          <button type="button" class="preset" data-share="45">Rural Austin (45%)</button>
+          <button type="button" class="preset active" data-share="55">Metro Austin (55%)</button>
+          <button type="button" class="preset" data-share="65">Hail Corridor (65%)</button>
+        </div>
+      </div>
+      <div class="hint">Hail risk drives 45–65% of an Austin premium depending on location. The hail corridor (NW Austin, Cedar Park, Round Rock) sees some of the highest claim frequency in Central Texas. This is the portion a Class 4 roof directly addresses.</div>
+    </div>
+
+    <div class="field">
+      <label for="dedBasis">Hail / storm deductible</label>
+      <select id="dedBasis">
+        <option value="0.01">1% of dwelling coverage</option>
+        <option value="0.02" selected>2% of dwelling coverage</option>
+        <option value="0.03">3% of dwelling coverage</option>
+        <option value="flat">I know the dollar amount</option>
+      </select>
+      <div class="pfx-wrap" id="dedFlatWrap" style="display:none;margin-top:.5rem">
+        <input id="dedFlat" type="number" inputmode="numeric" placeholder="8,000" min="500" max="100000">
+      </div>
+      <div class="hint">Percentage deductibles apply to dwelling coverage (rebuild cost, typically ~80% of home value — not market price).</div>
+    </div>
+
+  </div>
+
+  <div class="verdict" id="verdictCard">
+    <div class="eyebrow">The Bottom Line</div>
+    <div class="verdict-h" id="verdictHead">Enter your details above to see where you stand.</div>
+    <p class="verdict-p" id="verdictBody"></p>
+  </div>
+
+  <div class="card" id="sunkCard" style="display:none">
+    <div class="eyebrow">What This Roof Has Cost You</div>
+    <div class="stat-big">
+      <div class="pre">Premiums paid over this roof's life</div>
+      <div class="num" id="sunkNum">$0</div>
+      <div class="post" id="sunkPost"></div>
+    </div>
+    <div class="callout" id="sunkCallout"></div>
+  </div>
+
+  <div class="card" id="savingsCard" style="display:none">
+    <div class="eyebrow">Your Position After a New Roof</div>
+    <div class="card-h2">From a liability to a prize <span style="font-size:.72rem;font-family:var(--f-body);font-weight:500;color:var(--muted);letter-spacing:.02em;vertical-align:middle;margin-left:4px">ESTIMATES</span></div>
+    <div class="ledger">
+      <div class="l-row">
+        <div class="l-k">Hail-driven portion of your premium<small>The component a Class 4 impact-resistant roof directly addresses</small></div>
+        <div class="l-v" id="stormPortion">—</div>
+      </div>
+      <div class="l-row">
+        <div class="l-k">New roof discount range<small id="discountNote">Based on carrier typical rates for your roof age</small></div>
+        <div class="l-v range savings" id="discountRange">—</div>
+      </div>
+      <div class="l-row">
+        <div class="l-k">Class 4 impact-resistant credit<small id="impactNote">Requires documented UL 2218 Class 4 rating</small></div>
+        <div class="l-v range" id="impactRange">—</div>
+      </div>
+      <div class="l-row l-divider">
+        <div class="l-k" style="font-weight:700">Potential annual savings<small>Low → high estimate based on carrier data</small></div>
+        <div class="l-v savings" id="annualRange">—</div>
+      </div>
+      <div class="l-row">
+        <div class="l-k">10-year cumulative savings<small>Includes ~10% annual Texas premium inflation trend</small></div>
+        <div class="l-v" id="tenYearRange" style="color:var(--brand)">—</div>
+      </div>
+      <div class="l-row">
+        <div class="l-k">Your hail / storm deductible<small>Out of pocket before any hail claim pays</small></div>
+        <div class="l-v" id="deductibleVal" style="color:var(--alert)">—</div>
+      </div>
+    </div>
+    <div class="callout">
+      <strong>This is a launching pad, not a quote.</strong> The real value isn't a fixed discount — it's that a Class 4 roof moves you from a home carriers are watching to one they'll compete for. That's when you shop from a position of strength.
+    </div>
+    <p class="note">Discount ranges based on publicly available Texas carrier data for Class 4 impact-resistant roofing. Actual results vary by carrier, policy, and underwriting.</p>
+  </div>
+
+  <div class="card" id="carrierCard" style="display:none">
+    <div class="eyebrow">Carrier Discount Guide</div>
+    <div class="card-h2" style="margin-bottom:.6rem">How major carriers compare <span id="carrierAgeLbl" style="font-size:.8rem;font-family:var(--f-body);font-weight:400;color:var(--muted)"></span></div>
+    <div class="carrier-tbl-wrap">
+      <table class="carrier-tbl">
+        <thead>
+          <tr>
+            <th>Carrier</th>
+            <th>New Roof Discount</th>
+            <th>Class 4 Credit</th>
+          </tr>
+        </thead>
+        <tbody id="carrierTbody"></tbody>
+      </table>
+    </div>
+    <p class="note">Class 4 credits shown are in addition to the base new-roof discount. Ranges based on publicly available Texas market data. Contact your agent for policy-specific figures.</p>
+  </div>
+
+  <div class="card" id="coverageCard" style="display:none">
+    <div class="eyebrow">Coverage Protection Value</div>
+    <div class="card-h2" style="margin-bottom:.8rem">What you could lose in a hail claim</div>
+    <div id="covBadge"></div>
+    <div id="acvSection"></div>
+  </div>
+
+  <div class="card" id="chartCard" style="display:none">
+    <div class="eyebrow">Savings Projection</div>
+    <div class="card-h2" style="margin-bottom:.9rem">10-year cumulative view</div>
+    <div class="chart-wrap">
+      <canvas id="savingsChart"></canvas>
+    </div>
+    <p class="note" id="breakevenNote"></p>
+  </div>
+
+  <div class="card cta-center">
+    <div class="eyebrow">Next Step</div>
+    <div class="card-h2">Let's get you up there and look</div>
+    <p>A straight assessment — what your carrier sees, what your coverage actually is, and what your options are. No claim filed, no pressure.</p>
+    <div class="cta-btns">
+      <a class="btn btn-call" href="tel:5129459720">Call Justin · 512-945-9720</a>
+      <button class="btn btn-ghost" type="button" id="shareBtn">Share This Assessment</button>
+    </div>
+    <div class="copied" id="copied">Link copied — send it to your spouse.</div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="contact">Texas Choice Roofing · <a href="<https://txchoiceroofing.com>"><txchoiceroofing.com></a></div>
+  <div class="contact-sub">Justin Bilyeu · 512-945-9720 · justinb@txchoiceroofing.com</div>
+  <p class="disclaimer">
+    This tool provides estimates based on Texas insurance market averages and publicly available discount ranges. It is not a quote and not insurance advice. Actual savings depend on your specific carrier, policy, coverage levels, and underwriting. Texas Choice Roofing is a roofing contractor, not an insurance provider. Consult your insurance agent or a licensed professional for policy-specific guidance.
+  </p>
+</footer>
+
+<script>
+const EXTRA_ZIPS = new Set([
+  '78664','78665','78681','78682',
+  '78613',
+  '78660',
+  '78626','78627','78628','78633',
+  '78640',
+  '78610',
+  '78734','78738',
+  '78634',
+  '78653',
+  '78641','78646',
+  '78642',
+  '78620',
+  '78602',
+  '78676',
+  '78654',
+  '78666',
+]);
+
+function isAustinZip(z) {
+  if (!/^\d{5}$/.test(z)) return null;
+  if (EXTRA_ZIPS.has(z)) return true;
+  const n = parseInt(z, 10);
+  return n >= 78600 && n <= 78799;
+}
+
+const CARRIERS = {
+  unknown:      { name:'Unknown / Other',      nr:[0.15,0.35], impact:[0.12,0.22] },
+  statefarm:    { name:'State Farm',            nr:[0.18,0.28], impact:[0.16,0.24] },
+  allstate:     { name:'Allstate',              nr:[0.15,0.30], impact:[0.15,0.28] },
+  farmers:      { name:'Farmers',               nr:[0.15,0.25], impact:[0.12,0.20] },
+  tfb:          { name:'Texas Farm Bureau',     nr:[0.25,0.45], impact:[0.20,0.35] },
+  usaa:         { name:'USAA',                  nr:[0.15,0.28], impact:[0.15,0.25] },
+  travelers:    { name:'Travelers',             nr:[0.18,0.30], impact:[0.15,0.25] },
+  nationwide:   { name:'Nationwide',            nr:[0.15,0.25], impact:[0.12,0.20] },
+  libertymutual:{ name:'Liberty Mutual',        nr:[0.15,0.25], impact:[0.12,0.20] },
+  progressive:  { name:'Progressive',           nr:[0.10,0.18], impact:[0.08,0.14] },
+};
+
+function ageFactor(age) {
+  const pts = [[0,0],[5,.14],[10,.34],[15,.57],[20,.80],[25,1.0]];
+  if (age <= 0)  return 0;
+  if (age >= 25) return 1.0;
+  for (let i = 1; i < pts.length; i++) {
+    if (age <= pts[i][0]) {
+      const [x0,y0] = pts[i-1], [x1,y1] = pts[i];
+      return y0 + (y1-y0) * (age-x0) / (x1-x0);
+    }
+  }
+  return 1.0;
+}
+
+const INFLATION     = 0.10;
+const DWELLING_FRAC = 0.80;
+const fmt  = n => '$' + Math.round(n).toLocaleString('en-US');
+const fmtR = (lo,hi) => `${fmt(lo)}<span style="opacity:.55"> – </span>${fmt(hi)}`;
+
+function getInputs() {
+  const homeValue  = parseFloat(document.getElementById('homeValue').value) || 0;
+  const premium    = parseFloat(document.getElementById('premium').value)   || 0;
+  const roofAge    = parseFloat(document.getElementById('roofAge').value);
+  const ageValid   = !isNaN(roofAge) && roofAge >= 0;
+  const carrierKey = document.getElementById('carrier').value;
+  const roofType   = document.getElementById('roofType').value;
+  const stormFrac  = parseFloat(document.getElementById('share').value) / 100;
+  let deductible = 0;
+  const basis = document.getElementById('dedBasis').value;
+  if (basis === 'flat') {
+    deductible = parseFloat(document.getElementById('dedFlat').value) || 0;
+  } else {
+    deductible = homeValue * DWELLING_FRAC * parseFloat(basis);
+  }
+  const roofCost = homeValue > 0
+    ? Math.max(8000, Math.min(30000, homeValue * 0.037 + 2600))
+    : 14000;
+  return { homeValue, premium, roofAge, ageValid, carrierKey, roofType, stormFrac, deductible, roofCost };
+}
+
+function show(id) { document.getElementById(id).style.display = ''; }
+function hide(id) { document.getElementById(id).style.display = 'none'; }
+
+function renderVerdict(age) {
+  const h = document.getElementById('verdictHead');
+  const b = document.getElementById('verdictBody');
+  if (age === null || isNaN(age)) {
+    h.textContent = 'Enter your details above to see where you stand.';
+    b.textContent = '';
+    return;
+  }
+  if (age >= 20) {
+    h.textContent = "You're carrying a roof carriers want off their books.";
+    b.textContent = `At ${age} years, your roof is past the age where most carriers pay full replacement cost after a hail claim. You're paying hail-loaded premiums for coverage that's quietly shrinking. A Class 4 roof changes that conversation overnight.`;
+  } else if (age >= 15) {
+    h.textContent = "You're in the window carriers watch closely.";
+    b.textContent = `At ${age} years, depreciation is climbing and carriers are reviewing. Some are already shifting to Actual Cash Value — meaning after a hail claim, you'd collect far less than what it costs to replace. Replacing now keeps you in control at renewal.`;
+  } else if (age >= 11) {
+    h.textContent = "Your roof is entering the danger window.";
+    b.textContent = `At ${age} years, the gap between what you pay and what you'd actually collect in a hail claim is starting to widen. This is when homeowners get surprised. A Class 4 roof closes that gap before it matters.`;
+  } else if (age >= 6) {
+    h.textContent = "You have room — and a real opportunity.";
+    b.textContent = `Your roof still has years left, but a Class 4 upgrade now is what turns your home into one carriers compete for — and locks in significant premium credits before your next renewal.`;
+  } else {
+    h.textContent = "Your roof is in good shape — for now.";
+    b.textContent = `Newer roofs maintain the strongest coverage terms. A Class 4 impact-resistant shingle system can still unlock additional carrier credits worth knowing about before your next renewal.`;
+  }
+}
+
+function renderSunk(premium, roofAge, stormFrac) {
+  if (!premium || !roofAge || roofAge <= 0) { hide('sunkCard'); return; }
+  const sunk      = premium * roofAge;
+  const stormSunk = sunk * stormFrac;
+  document.getElementById('sunkNum').textContent  = fmt(sunk);
+  document.getElementById('sunkPost').textContent = `${roofAge} year${roofAge !== 1 ? 's' : ''} of premiums — roughly ${fmt(stormSunk)} of that for hail protection on a roof that has been aging out of full coverage.`;
+  document.getElementById('sunkCallout').innerHTML = `<strong>Here's how to make those dollars finally work for you.</strong> You've been paying for hail protection year after year. A Class 4 impact-resistant roof is what turns that premium history into real leverage — instead of money toward coverage you may not be able to fully collect on.`;
+  show('sunkCard');
+}
+
+function renderSavings(inp) {
+  const { premium, roofAge, ageValid, carrierKey, roofType, stormFrac, deductible } = inp;
+  if (!premium || !ageValid) { hide('savingsCard'); hide('carrierCard'); return; }
+  const c     = CARRIERS[carrierKey] || CARRIERS.unknown;
+  const af    = ageFactor(roofAge);
+  const storm = premium * stormFrac;
+  const nrLo  = storm * c.nr[0] * af;
+  const nrHi  = storm * c.nr[1] * af;
+  const impactFactor = roofType === 'class4' ? 0 : 1;
+  const impLo = storm * c.impact[0] * impactFactor;
+  const impHi = storm * c.impact[1] * impactFactor;
+  const annLo = nrLo + impLo;
+  const annHi = nrHi + impHi;
+  let cumLo = 0, cumHi = 0;
+  let bLo = premium, bHi = premium;
+  const yearlyMid = [];
+  for (let y = 1; y <= 10; y++) {
+    bLo *= (1 + INFLATION); bHi *= (1 + INFLATION);
+    const sLo = bLo * stormFrac * (c.nr[0] + c.impact[0] * impactFactor) * af;
+    const sHi = bHi * stormFrac * (c.nr[1] + c.impact[1] * impactFactor) * af;
+    cumLo += sLo; cumHi += sHi;
+    yearlyMid.push((cumLo + cumHi) / 2);
+  }
+  document.getElementById('stormPortion').textContent  = fmt(storm) + '/yr';
+  document.getElementById('discountRange').innerHTML   = fmtR(nrLo, nrHi) + '/yr';
+  document.getElementById('deductibleVal').textContent = fmt(deductible);
+  const impEl   = document.getElementById('impactRange');
+  const impNote = document.getElementById('impactNote');
+  if (roofType === 'class4') {
+    impEl.innerHTML  = '<span class="na">Already Class 4 — credit may already apply</span>';
+    impNote.textContent = 'Confirm with your agent whether this discount is on your current policy';
+  } else {
+    impEl.innerHTML  = fmtR(impLo, impHi) + '/yr';
+    impNote.textContent = 'Requires documented UL 2218 Class 4 impact rating at installation';
+  }
+  document.getElementById('discountNote').textContent =
+    carrierKey === 'unknown'
+      ? 'Market average range for your roof age bracket'
+      : `${CARRIERS[carrierKey].name} typical range for your roof age bracket`;
+  document.getElementById('annualRange').innerHTML  = fmtR(annLo, annHi) + '/yr';
+  document.getElementById('tenYearRange').innerHTML = fmtR(cumLo, cumHi);
+  show('savingsCard');
+  renderCarrierTable(carrierKey, af, impactFactor, roofAge);
+  renderChart(yearlyMid, inp);
+}
+
+function renderCarrierTable(selectedKey, af, impFactor, roofAge) {
+  document.getElementById('carrierAgeLbl').textContent = `— ${roofAge}-year-old roof`;
+  const tbody = document.getElementById('carrierTbody');
+  const rows = Object.entries(CARRIERS).map(([key, c]) => {
+    const nrLo  = Math.round(c.nr[0]     * af * 100);
+    const nrHi  = Math.round(c.nr[1]     * af * 100);
+    const impLo = Math.round(c.impact[0] * impFactor * 100);
+    const impHi = Math.round(c.impact[1] * impFactor * 100);
+    const impTxt = impFactor === 0
+      ? '<span class="disc-lo">Already rated</span>'
+      : `<span class="wind-val">${impLo}–${impHi}%</span>`;
+    return `<tr class="${key === selectedKey ? 'sel' : ''}">
+      <td>${c.name}</td>
+      <td><span class="disc-hi">${nrLo}–${nrHi}%</span></td>
+      <td>${impTxt}</td>
+    </tr>`;
+  }).join('');
+  tbody.innerHTML = rows;
+  show('carrierCard');
+}
+
+function renderCoverage(inp) {
+  const { roofAge, ageValid, roofCost, deductible } = inp;
+  if (!ageValid) { hide('coverageCard'); return; }
+  show('coverageCard');
+  const badge  = document.getElementById('covBadge');
+  const acvSec = document.getElementById('acvSection');
+  let cls, head, body;
+  if      (roofAge <= 5)  { cls='good';   head='Full Replacement Cost (RCV) likely maintained';  body='Your roof age supports strong coverage — most carriers maintain full RCV for roofs under 10 years.'; }
+  else if (roofAge <= 10) { cls='good';   head='Full Replacement Cost (RCV) likely maintained';  body='Strong coverage terms still, though some carriers begin reviewing at renewal as the roof approaches 10 years.'; }
+  else if (roofAge <= 15) { cls='warn';   head='⚠️  ACV transition becoming possible';           body='Some carriers shift to Actual Cash Value (ACV) at renewal. ACV means depreciation is deducted from claim payouts, reducing what you actually receive after hail damage.'; }
+  else if (roofAge <= 20) { cls='danger'; head='🔴  High risk: ACV conversion or non-renewal';   body='A hail claim on a roof this age could leave you covering 50–70% of replacement costs out of pocket after depreciation and your deductible.'; }
+  else                    { cls='danger'; head='🔴  Critical: hail coverage exclusion possible'; body='Many Texas carriers will non-renew or exclude hail coverage for roofs over 20 years. You may face significant coverage gaps or difficulty finding a carrier willing to write you.'; }
+  badge.innerHTML = `<div class="cov-badge ${cls}"><p><strong>${head}</strong>${body}</p></div>`;
+  if (roofAge >= 11) {
+    const depr    = Math.min(roofAge / 25, 0.96);
+    const deprPct = Math.round(depr * 100);
+    const acvPay  = Math.max(0, roofCost * (1-depr) - deductible);
+    const rcvPay  = Math.max(0, roofCost - deductible);
+    const protect = rcvPay - acvPay;
+    const zero    = acvPay <= 0;
+    const dedTxt  = deductible > 0 ? fmt(deductible) : '(enter home value)';
+    const zeroNote = zero
+      ? `<tr><td class="ak" colspan="2" style="color:#DC2626;font-size:.75rem;padding-top:5px;">* Depreciation + deductible exceed replacement cost — insurance pays nothing. You cover the full amount.</td></tr>`
+      : '';
+    acvSec.innerHTML = `
+      <p style="font-size:.8rem;font-weight:600;color:var(--ink-soft);margin-bottom:8px;">
+        If your ${roofAge}-year-old roof is damaged in a hail storm:
+      </p>
+      <table class="acv-tbl">
+        <tr><td class="ak">Roof replacement cost</td><td class="av">${fmt(roofCost)}</td></tr>
+        <tr><td class="ak">ACV depreciation (${deprPct}%)</td><td class="av neg">&minus;${fmt(roofCost*depr)}</td></tr>
+        <tr><td class="ak">Your deductible</td><td class="av neg">&minus;${dedTxt}</td></tr>
+        <tr class="acv-div">
+          <td class="ak"><strong>ACV policy pays you</strong></td>
+          <td class="av ${zero ? 'zero' : 'pos'}">${zero ? '$0 *' : fmt(acvPay)}</td>
+        </tr>
+        ${zeroNote}
+        <tr><td colspan="2" style="padding:9px 10px 3px;font-weight:700;font-size:.8rem;color:var(--brand)">With a new Class 4 roof (RCV policy):</td></tr>
+        <tr><td class="ak">Roof replacement cost</td><td class="av">${fmt(roofCost)}</td></tr>
+        <tr><td class="ak">Your deductible</td><td class="av neg">&minus;${dedTxt}</td></tr>
+        <tr class="acv-div"><td class="ak"><strong>RCV policy pays you</strong></td><td class="av pos">${fmt(rcvPay)}</td></tr>
+      </table>
+      <div class="protect-box">
+        <div>
+          <div class="pb-label">Coverage protection value</div>
+          <div class="pb-sub">Difference you keep with RCV coverage intact</div>
+        </div>
+        <div class="pb-val">${fmt(protect)}</div>
+      </div>`;
+  } else {
+    acvSec.innerHTML = '';
+  }
+}
+
+let chartInst = null;
+function renderChart(yearlyMid, inp) {
+  const { roofCost } = inp;
+  const labels    = yearlyMid.map((_,i) => 'Yr ' + (i+1));
+  const breakeven = yearlyMid.findIndex(v => v >= roofCost);
+  document.getElementById('breakevenNote').textContent = breakeven >= 0
+    ? `Projected breakeven: Year ${breakeven+1} — cumulative savings exceed approximate roof replacement cost (${fmt(roofCost)}). Savings continue to compound as premiums rise.`
+    : `Approximate roof replacement cost for this home: ${fmt(roofCost)}. Adjust inputs or select your carrier for a more specific projection.`;
+  const ctx = document.getElementById('savingsChart').getContext('2d');
+  if (chartInst) chartInst.destroy();
+  chartInst = new Chart(ctx, {
+    type:'line',
+    data:{
+      labels,
+      datasets:[
+        {
+          label:'Cumulative Savings (midpoint)',
+          data:yearlyMid,
+          borderColor:'#1d3b2f',
+          backgroundColor:'rgba(29,59,47,.08)',
+          borderWidth:2.5,
+          pointBackgroundColor:'#1d3b2f',
+          pointRadius:3,
+          tension:0.35,
+          fill:true,
+        },
+        {
+          label:'Approx. Roof Cost',
+          data:Array(10).fill(roofCost),
+          borderColor:'#b08328',
+          borderWidth:2,
+          borderDash:[6,4],
+          pointRadius:0,
+          fill:false,
+        }
+      ]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{position:'bottom',labels:{font:{size:11,family:'Spline Sans, system-ui'},padding:12,boxWidth:12}},
+        tooltip:{callbacks:{label:c=>' '+c.dataset.label+': $'+Math.round(c.parsed.y).toLocaleString()}}
+      },
+      scales:{
+        y:{beginAtZero:true,ticks:{callback:v=>'$'+(v>=1000?(v/1000).toFixed(0)+'k':v),font:{size:11}},grid:{color:'rgba(0,0,0,0.05)'}},
+        x:{ticks:{font:{size:11}},grid:{display:false}}
+      }
+    }
+  });
+  show('chartCard');
+}
+
+function renderAll() {
+  const inp = getInputs();
+  renderVerdict(inp.ageValid ? inp.roofAge : null);
+  renderSunk(inp.premium, inp.roofAge, inp.stormFrac);
+  renderSavings(inp);
+  renderCoverage(inp);
+  syncShareUrl();
+}
+
+function checkZip() {
+  const z   = document.getElementById('zip').value.trim();
+  const msg = document.getElementById('zipMsg');
+  const inp = document.getElementById('zip');
+  if (!z)           { msg.className = 'zip-msg'; inp.classList.remove('err'); return; }
+  if (z.length < 5) { msg.className = 'zip-msg'; return; }
+  const s = isAustinZip(z);
+  if (s === true)       { msg.className='zip-msg ok';  msg.textContent="Austin metro area — you're in our service area."; inp.classList.remove('err'); }
+  else if (s === false) { msg.className='zip-msg out'; msg.textContent='This tool is built for the Austin metro area. Call 512-945-9720 for a consultation anywhere in Texas.'; inp.classList.add('err'); }
+  else                  { msg.className='zip-msg err'; msg.textContent='Please enter a valid 5-digit ZIP code.'; inp.classList.add('err'); }
+}
+
+function syncShareUrl() {
+  const ids = {hv:'homeValue',pr:'premium',ra:'roofAge',cr:'carrier',rt:'roofType',sh:'share',db:'dedBasis',df:'dedFlat',z:'zip'};
+  const params = new URLSearchParams();
+  Object.entries(ids).forEach(([k,id]) => { const v=document.getElementById(id).value; if(v) params.set(k,v); });
+  window.__shareUrl = location.origin + location.pathname + '?' + params.toString();
+}
+
+function loadFromUrl() {
+  const p = new URLSearchParams(location.search);
+  const map = {hv:'homeValue',pr:'premium',ra:'roofAge',cr:'carrier',rt:'roofType',sh:'share',db:'dedBasis',df:'dedFlat',z:'zip'};
+  Object.entries(map).forEach(([k,id]) => { if(p.has(k)) document.getElementById(id).value=p.get(k); });
+  if (p.has('sh')) {
+    document.getElementById('shareVal').textContent = p.get('sh') + '%';
+    document.querySelectorAll('.preset').forEach(b => b.classList.toggle('active', b.dataset.share===p.get('sh')));
+  }
+  if (p.has('db') && p.get('db')==='flat') document.getElementById('dedFlatWrap').style.display='block';
+}
+
+['homeValue','premium','roofAge','carrier','roofType','dedBasis','dedFlat'].forEach(id => {
+  document.getElementById(id).addEventListener('input',  renderAll);
+  document.getElementById(id).addEventListener('change', renderAll);
+});
+document.getElementById('share').addEventListener('input', () => {
+  const v = document.getElementById('share').value;
+  document.getElementById('shareVal').textContent = v + '%';
+  document.querySelectorAll('.preset').forEach(b => b.classList.toggle('active', b.dataset.share===v));
+  renderAll();
+});
+document.querySelectorAll('.preset').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('share').value = btn.dataset.share;
+    document.getElementById('shareVal').textContent = btn.dataset.share + '%';
+    document.querySelectorAll('.preset').forEach(b => b.classList.toggle('active', b===btn));
+    renderAll();
+  });
+});
+document.getElementById('dedBasis').addEventListener('change', () => {
+  document.getElementById('dedFlatWrap').style.display =
+    document.getElementById('dedBasis').value==='flat' ? 'block' : 'none';
+  renderAll();
+});
+document.getElementById('zip').addEventListener('input',  checkZip);
+document.getElementById('zip').addEventListener('change', checkZip);
+document.getElementById('shareBtn').addEventListener('click', () => {
+  syncShareUrl();
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(window.__shareUrl).then(() => {
+      const el = document.getElementById('copied');
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 2600);
+    });
+  }
+});
+
+loadFromUrl();
+checkZip();
+renderAll();
+document.querySelectorAll('input,select').forEach(el => { el.style.background='#fff'; el.style.color='#1a1814'; });
+</script>
+</body>
+</html>
