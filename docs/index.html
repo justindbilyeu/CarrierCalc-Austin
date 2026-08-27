@@ -546,7 +546,7 @@ footer{max-width:680px;margin:0 auto;padding:1.4rem 1.4rem 0;text-align:center}
     <div class="card-h2">Get a straight assessment</div>
     <p>A straight assessment — what your carrier sees, what your coverage actually is, and what your options are. No claim filed, no pressure.</p>
     <div class="cta-btns">
-      <a class="btn btn-call" href="tel:5129459720">Call Justin · 512-945-9720</a>
+      <a class="btn btn-call" id="callBtn" href="tel:5129459720">Call Justin · 512-945-9720</a>
       <button class="btn btn-ghost" type="button" id="shareBtn">Share This Assessment</button>
     </div>
     <div class="copied" id="copied">Link copied — send it to your spouse.</div>
@@ -556,7 +556,7 @@ footer{max-width:680px;margin:0 auto;padding:1.4rem 1.4rem 0;text-align:center}
 
 <footer>
   <div class="contact">Texas Choice Roofing · <a href="https://txchoiceroofing.com">txchoiceroofing.com</a></div>
-  <div class="contact-sub">Justin Bilyeu · 512-945-9720 · justinb@txchoiceroofing.com</div>
+  <div class="contact-sub" id="repLine">Justin Bilyeu · 512-945-9720 · justinb@txchoiceroofing.com</div>
   <p class="disclaimer">
     This tool provides estimates based on Texas insurance market averages and publicly available discount ranges. It is not a quote and not insurance advice. Actual savings depend on your specific carrier, policy, coverage levels, and underwriting. Texas Choice Roofing is a roofing contractor, not an insurance provider. Consult your insurance agent or a licensed professional for policy-specific guidance.
   </p>
@@ -1095,11 +1095,56 @@ function checkZip() {
   if (z.length < 5){ msg.className = 'zip-msg'; return; }
   const s = isServiceAreaZip(z);
   if (s === true)       { msg.className='zip-msg ok'; msg.textContent="Austin metro — you're in our service area."; inp.classList.remove('err'); }
-  else if (s === false) { msg.className='zip-msg out'; msg.textContent='This tool is built for the Austin metro area. Call 512-945-9720 for a consultation anywhere in Texas.'; inp.classList.add('err'); }
+  else if (s === false) { msg.className='zip-msg out'; msg.textContent='This tool is built for the Austin metro area. Call ' + ACTIVE_REP.phoneDisplay + ' for a consultation anywhere in Texas.'; inp.classList.add('err'); }
   else                  { msg.className='zip-msg err'; msg.textContent='Please enter a valid 5-digit ZIP code.'; inp.classList.add('err'); }
 }
 
 // ─── SHARE URL ────────────────────────────────────────────────────────────────
+// ─── REP ROUTING ──────────────────────────────────────────────────────────────
+// One build per market; each salesperson gets the same link with ?rep=<slug>.
+// The alternative -- taking a name and phone straight from the URL -- would let
+// anyone hand out a company-branded page with their own number on it.
+const REP_DIRECTORY = {
+  "david": {
+    "email": "david@txchoiceroofing.com",
+    "first": "David",
+    "name": "David Johnson",
+    "phone": "9792489856",
+    "phoneDisplay": "979-248-9856"
+  },
+  "justin": {
+    "email": "justinb@txchoiceroofing.com",
+    "first": "Justin",
+    "name": "Justin Bilyeu",
+    "phone": "5129459720",
+    "phoneDisplay": "512-945-9720"
+  }
+};
+const DEFAULT_REP = {
+  name: 'Justin Bilyeu', first: 'Justin', phone: '5129459720',
+  phoneDisplay: '512-945-9720', email: 'justinb@txchoiceroofing.com'
+};
+let ACTIVE_REP = DEFAULT_REP;
+let ACTIVE_REP_SLUG = '';
+
+function applyRep() {
+  const slug = new URLSearchParams(location.search).get('rep') || '';
+  const found = Object.prototype.hasOwnProperty.call(REP_DIRECTORY, slug)
+    ? REP_DIRECTORY[slug] : null;
+  ACTIVE_REP = found || DEFAULT_REP;
+  ACTIVE_REP_SLUG = found ? slug : '';
+
+  const cta = document.getElementById('callBtn');
+  if (cta) {
+    cta.href = 'tel:' + ACTIVE_REP.phone;
+    cta.textContent = 'Call ' + ACTIVE_REP.first + ' · ' + ACTIVE_REP.phoneDisplay;
+  }
+  const line = document.getElementById('repLine');
+  if (line) {
+    line.textContent = ACTIVE_REP.name + ' · ' + ACTIVE_REP.phoneDisplay + ' · ' + ACTIVE_REP.email;
+  }
+}
+
 function syncShareUrl() {
   const ids = { hv:'homeValue', pr:'premium', ra:'roofAge', cr:'carrier', rt:'roofType', nf:'newRoof', sh:'share', db:'dedBasis', df:'dedFlat', z:'zip', qr:'quotedRoofCost' };
   const params = new URLSearchParams();
@@ -1107,6 +1152,7 @@ function syncShareUrl() {
     const v = document.getElementById(id).value;
     if (v) params.set(k, v);
   });
+  if (ACTIVE_REP_SLUG) params.set('rep', ACTIVE_REP_SLUG);
   window.__shareUrl = location.origin + location.pathname + '?' + params.toString();
 }
 
@@ -1168,6 +1214,7 @@ document.getElementById('shareBtn').addEventListener('click', () => {
 });
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
+applyRep();
 loadFromUrl();
 checkZip();
 renderAll();
