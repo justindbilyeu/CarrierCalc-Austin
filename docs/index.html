@@ -1220,6 +1220,17 @@ document.getElementById('shareBtn').addEventListener('click', () => {
   }
 });
 
+// ─── OFFLINE ──────────────────────────────────────────────────────────────────
+// Reps open this at a front door, sometimes with no usable signal. Registering
+// is best-effort: a failure here must never affect the page, and the page works
+// fine without it. Requires a secure context, so file:// simply skips.
+if ('serviceWorker' in navigator &&
+    (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 applyRep();
 loadFromUrl();
