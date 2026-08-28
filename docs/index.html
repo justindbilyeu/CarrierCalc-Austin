@@ -33,10 +33,10 @@
   --paper-warm:#ece7dc;
   --card:#fffdf8;
   --line:#ddd6c8;
-  --brand:#1d3b2f;
-  --brand-light:#2f5544;
-  --gold:#b08328;
-  --gold-soft:#d4a94e;
+  --brand:#141414;
+  --brand-light:#3a3a3a;
+  --gold:#c8303f;
+  --gold-soft:#d95f6c;
   --alert:#a8442a;
   --green-good:#15803d;
   --shadow:0 1px 2px rgba(26,24,20,.06),0 8px 24px rgba(26,24,20,.07);
@@ -546,7 +546,7 @@ footer{max-width:680px;margin:0 auto;padding:1.4rem 1.4rem 0;text-align:center}
     <div class="card-h2">Get a straight assessment</div>
     <p>A straight assessment — what your carrier sees, what your coverage actually is, and what your options are. No claim filed, no pressure.</p>
     <div class="cta-btns">
-      <a class="btn btn-call" id="callBtn" href="tel:5129459720">Call Justin · 512-945-9720</a>
+      <a class="btn btn-call" id="callBtn" href="tel:5127749149">Call Texas Choice Roofing · 512-774-9149</a>
       <button class="btn btn-ghost" type="button" id="shareBtn">Share This Assessment</button>
     </div>
     <div class="copied" id="copied">Link copied — send it to your spouse.</div>
@@ -556,7 +556,7 @@ footer{max-width:680px;margin:0 auto;padding:1.4rem 1.4rem 0;text-align:center}
 
 <footer>
   <div class="contact">Texas Choice Roofing · <a href="https://txchoiceroofing.com">txchoiceroofing.com</a></div>
-  <div class="contact-sub" id="repLine">Justin Bilyeu · 512-945-9720 · justinb@txchoiceroofing.com</div>
+  <div class="contact-sub" id="repLine">Texas Choice Roofing · 512-774-9149</div>
   <p class="disclaimer">
     This tool provides estimates based on Texas insurance market averages and publicly available discount ranges. It is not a quote and not insurance advice. Actual savings depend on your specific carrier, policy, coverage levels, and underwriting. Texas Choice Roofing is a roofing contractor, not an insurance provider. Consult your insurance agent or a licensed professional for policy-specific guidance.
   </p>
@@ -1106,31 +1106,37 @@ function checkZip() {
 // anyone hand out a company-branded page with their own number on it.
 const REP_DIRECTORY = {
   "cody": {
+    "cta": "Cody",
     "email": "cody@txchoiceroofing.com",
-    "first": "Cody",
     "name": "Cody Kleeves",
     "phone": "5126533769",
     "phoneDisplay": "512-653-3769"
   },
   "david": {
+    "cta": "David",
     "email": "david@txchoiceroofing.com",
-    "first": "David",
     "name": "David Johnson",
     "phone": "9792489856",
     "phoneDisplay": "979-248-9856"
   },
   "justin": {
+    "cta": "Justin",
     "email": "justinb@txchoiceroofing.com",
-    "first": "Justin",
     "name": "Justin Bilyeu",
     "phone": "5129459720",
     "phoneDisplay": "512-945-9720"
   }
 };
 const DEFAULT_REP = {
-  name: 'Justin Bilyeu', first: 'Justin', phone: '5129459720',
-  phoneDisplay: '512-945-9720', email: 'justinb@txchoiceroofing.com'
+  name: 'Texas Choice Roofing', cta: 'Texas Choice Roofing', phone: '5127749149',
+  phoneDisplay: '512-774-9149', email: ''
 };
+
+// Join only the parts that exist: a contact without an email must not render
+// a trailing separator.
+function contactLine(r) {
+  return [r.name, r.phoneDisplay, r.email].filter(Boolean).join(' · ');
+}
 let ACTIVE_REP = DEFAULT_REP;
 let ACTIVE_REP_SLUG = '';
 
@@ -1144,11 +1150,11 @@ function applyRep() {
   const cta = document.getElementById('callBtn');
   if (cta) {
     cta.href = 'tel:' + ACTIVE_REP.phone;
-    cta.textContent = 'Call ' + ACTIVE_REP.first + ' · ' + ACTIVE_REP.phoneDisplay;
+    cta.textContent = 'Call ' + ACTIVE_REP.cta + ' · ' + ACTIVE_REP.phoneDisplay;
   }
   const line = document.getElementById('repLine');
   if (line) {
-    line.textContent = ACTIVE_REP.name + ' · ' + ACTIVE_REP.phoneDisplay + ' · ' + ACTIVE_REP.email;
+    line.textContent = contactLine(ACTIVE_REP);
   }
 }
 
