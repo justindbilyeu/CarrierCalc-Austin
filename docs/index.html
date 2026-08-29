@@ -1326,8 +1326,15 @@ document.getElementById('shareBtn').addEventListener('click', () => {
       });
       if (!res.ok) throw new Error('bad status');
       form.classList.remove('show');
-      done.innerHTML = '<b>Thanks, ' + name.split(' ')[0] + '.</b>' +
-        repFirst() + ' will reach out shortly. Nothing was shared with anyone else.';
+      // Build this rather than interpolating into innerHTML. The name is
+      // whatever the homeowner typed; markup in it should be text on the page,
+      // not markup in the page.
+      done.textContent = '';
+      const hi = document.createElement('b');
+      hi.textContent = 'Thanks, ' + name.split(' ')[0] + '.';
+      done.appendChild(hi);
+      done.appendChild(document.createTextNode(
+        repFirst() + ' will reach out shortly. Nothing was shared with anyone else.'));
       done.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       done.classList.add('show');
     } catch (err) {
