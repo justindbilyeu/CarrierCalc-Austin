@@ -259,6 +259,22 @@ input[type=range]::-moz-range-thumb{
 .chart-wrap{position:relative;height:260px}
 @media(max-width:480px){.chart-wrap{height:210px}}
 
+/* ── Lead form ───────────────────────────────────────── */
+.lead-open{margin-top:.7rem}
+.lead-form{display:none;margin-top:1rem;text-align:left}
+.lead-form.show{display:block}
+.lead-form label{display:block;font-size:.82rem;font-weight:600;margin:.7rem 0 .25rem}
+.lead-form input,.lead-form textarea{width:100%;padding:.7rem .8rem;border:1px solid var(--line);
+  border-radius:8px;font-size:1rem;font-family:var(--f-body);background:#fff;color:var(--ink)}
+.lead-form textarea{min-height:4.2rem;resize:vertical}
+.lead-note{font-size:.78rem;color:var(--muted);margin-top:.5rem}
+.lead-err{display:none;margin-top:.7rem;font-size:.85rem;color:var(--alert)}
+.lead-err.show{display:block}
+.lead-done{display:none;margin-top:.9rem;padding:.9rem 1rem;border-radius:9px;
+  background:var(--paper-warm);border:1px solid var(--line);text-align:left}
+.lead-done.show{display:block}
+.lead-done b{display:block;margin-bottom:.2rem}
+
 /* ── CTA ─────────────────────────────────────────────── */
 .cta-center{text-align:center}
 .cta-center .card-h2{margin-bottom:.45rem}
@@ -550,6 +566,26 @@ footer{max-width:680px;margin:0 auto;padding:1.4rem 1.4rem 0;text-align:center}
       <button class="btn btn-ghost" type="button" id="shareBtn">Share This Assessment</button>
     </div>
     <div class="copied" id="copied">Link copied — send it to your spouse.</div>
+
+    <button class="btn btn-ghost lead-open" type="button" id="leadOpen">Get my free roof assessment</button>
+
+    <form class="lead-form" id="leadForm" novalidate>
+      <label for="leadName">Your name</label>
+      <input type="text" id="leadName" name="name" autocomplete="name" required>
+
+      <label for="leadPhone">Phone</label>
+      <input type="tel" id="leadPhone" name="phone" autocomplete="tel" required>
+
+      <label for="leadNote">Anything we should know? <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+      <textarea id="leadNote" name="note" rows="2"></textarea>
+
+      <button class="btn btn-call" type="submit" id="leadSend" style="margin-top:.9rem">Send</button>
+      <p class="lead-note">We send this to <span id="leadWho">your rep</span> along with the numbers on this page. Nobody else sees it.</p>
+      <p class="lead-err" id="leadErr"></p>
+    </form>
+
+    <div class="lead-done" id="leadDone"></div>
+
   </div>
 
 </div><!-- /wrap -->
@@ -1084,6 +1120,9 @@ function renderAll() {
   renderCoverage(inp);
   orderCards(inp.ageValid ? inp.roofAge : 0);
   syncShareUrl();
+
+  pingAssessment();
+
 }
 
 // ─── ZIP ───────────────────────────────────────────────────────────────────────
@@ -1225,6 +1264,101 @@ document.getElementById('shareBtn').addEventListener('click', () => {
     });
   }
 });
+
+// ─── LEAD CAPTURE ─────────────────────────────────────────────────────────────
+
+// A homeowner raising a hand. Everything here is built so that a failure of the
+// endpoint degrades to the thing that already worked -- the phone number -- and
+// never to a page that looks broken at the moment someone decided to trust it.
+(function () {
+  const API   = 'https://juiceworks-api.netlify.app';
+  const TENANT= 'tcr-austin';
+  const open  = document.getElementById('leadOpen');
+  const form  = document.getElementById('leadForm');
+  const done  = document.getElementById('leadDone');
+  const errEl = document.getElementById('leadErr');
+  const who   = document.getElementById('leadWho');
+  if (!open || !form) return;
+
+  function repFirst() { return (ACTIVE_REP.cta || ACTIVE_REP.name || '').split(' ')[0] || 'your rep'; }
+  function refreshWho() { if (who) who.textContent = ACTIVE_REP.name || 'your rep'; }
+  refreshWho();
+
+  open.addEventListener('click', () => {
+    form.classList.add('show'); open.style.display = 'none';
+    refreshWho();
+    document.getElementById('leadName').focus();
+  });
+
+  // If we cannot hand the request over, say so plainly and give them the phone.
+  // "Something went wrong" with no way forward is worse than no form at all.
+  function fallback() {
+    errEl.innerHTML = 'We could not send that just now — please call ' +
+      '<a href="tel:' + ACTIVE_REP.phone + '">' + ACTIVE_REP.phoneDisplay + '</a> and we will pick it up from there.';
+    errEl.classList.add('show');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errEl.classList.remove('show');
+
+    const name  = document.getElementById('leadName').value.trim();
+    const phone = document.getElementById('leadPhone').value.trim();
+    if (name.length < 2 || phone.replace(/\D/g, '').length < 10) {
+      errEl.textContent = 'Please add your name and a phone number we can reach you on.';
+      errEl.classList.add('show');
+      return;
+    }
+
+    const btn = document.getElementById('leadSend');
+    btn.disabled = true; btn.textContent = 'Sending…';
+
+    syncShareUrl();  // the link carries the whole assessment; send it along
+    try {
+      const res = await fetch(API + '/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tenant: TENANT, rep: ACTIVE_REP_SLUG, name: name, phone: phone,
+          note: document.getElementById('leadNote').value.trim(),
+          shareUrl: window.__shareUrl || ''
+        })
+      });
+      if (!res.ok) throw new Error('bad status');
+      form.classList.remove('show');
+      done.innerHTML = '<b>Thanks, ' + name.split(' ')[0] + '.</b>' +
+        repFirst() + ' will reach out shortly. Nothing was shared with anyone else.';
+      done.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      done.classList.add('show');
+    } catch (err) {
+      fallback();
+    } finally {
+      btn.disabled = false; btn.textContent = 'Send';
+    }
+  });
+})();
+
+// One count per assessment, not one per keystroke. renderAll() runs on every
+// slider nudge; without the debounce an owner's usage figure would be a measure
+// of fidgeting rather than of assessments.
+let __pingTimer = null, __pingSent = false;
+function pingAssessment() {
+  clearTimeout(__pingTimer);
+  __pingTimer = setTimeout(() => {
+    if (__pingSent) return;
+    const inp = getInputs();
+    if (!inp.premium || !inp.ageValid) return;   // not a real assessment yet
+    __pingSent = true;
+    // Counts only: tenant, rep, event, time. No homeowner data, and the
+    // endpoint rejects the request outright if any is attached.
+    fetch('https://juiceworks-api.netlify.app/ping', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
+      body: JSON.stringify({ tenant: 'tcr-austin', rep: ACTIVE_REP_SLUG,
+                             event: 'assessment_run', ts: Date.now() })
+    }).catch(() => {});   // a counter is never worth breaking a page for
+  }, 2500);
+}
+
 
 // ─── OFFLINE ──────────────────────────────────────────────────────────────────
 // Reps open this at a front door, sometimes with no usable signal. Registering

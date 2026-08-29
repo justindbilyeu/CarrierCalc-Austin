@@ -1,4 +1,4 @@
-// CarrierCalc service worker — build f45586c0b905
+// CarrierCalc service worker — build ae37a9bc9a02
 //
 // Reps open this at a customer's front door, sometimes with no usable signal.
 // The page is a single self-contained file, so offline support is just caching
@@ -12,7 +12,7 @@
 //
 // The cache name carries the build hash, so every deploy lands in a fresh cache
 // and the old one is deleted on activate. A stale page cannot survive a deploy.
-const VERSION = 'f45586c0b905';
+const VERSION = 'ae37a9bc9a02';
 const CACHE = 'carriercalc-austin-' + VERSION;
 const PAGE = new URL('./', self.location).href;
 const NETWORK_TIMEOUT_MS = 3000;
