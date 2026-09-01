@@ -13,9 +13,28 @@
 // The cache name carries the build hash, so every deploy lands in a fresh cache
 // and the old one is deleted on activate. A stale page cannot survive a deploy.
 const VERSION = 'a8f30ead3e80';
-const CACHE = 'carriercalc-austin-' + VERSION;
+// The prefix identifies this page's caches; the version distinguishes builds of
+// it. Both are needed on activate, because caches.keys() returns every cache on
+// the whole origin -- including other CarrierCalc pages served from the same
+// site. The build version is a hex hash and never contains a dash, which is how
+// 'carriercalc-austin-' tells its own caches apart from
+// 'carriercalc-austin-portfolio-'.
+const CACHE_PREFIX = 'carriercalc-austin-';
+const CACHE = CACHE_PREFIX + VERSION;
+const isOwnCache = k => k.startsWith(CACHE_PREFIX) && !k.slice(CACHE_PREFIX.length).includes('-');
 const PAGE = new URL('./', self.location).href;
 const NETWORK_TIMEOUT_MS = 3000;
+
+// A worker's scope is the directory it is served from, which for these deploys
+// is the whole site — so this worker sees navigations to pages that are not its
+// own: the /david/ redirect today, a second build in the same repo tomorrow.
+// It must never store one of those under its own cache key, or a rep's offline
+// copy quietly becomes a different page and they find out with no signal.
+const PAGE_PATH = new URL(PAGE).pathname;
+function isOwnPage(url) {
+  const p = new URL(url).pathname;
+  return p === PAGE_PATH || p === PAGE_PATH + 'index.html';
+}
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -29,7 +48,12 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+      // Clear older versions of THIS page only. The original filter deleted
+      // every other cache on the origin, so opening a second CarrierCalc page
+      // wiped the first one's offline copy outright -- worse than staleness,
+      // and invisible until a rep lost signal.
+      .then(keys => Promise.all(
+        keys.filter(k => isOwnCache(k) && k !== CACHE).map(k => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -47,8 +71,10 @@ self.addEventListener('fetch', event => {
           setTimeout(() => reject(new Error('network timeout')), NETWORK_TIMEOUT_MS))
       ]);
       if (fresh && fresh.ok) {
-        // Store under the bare page URL so every ?rep= link shares one entry.
-        cache.put(PAGE, fresh.clone());
+        // Store under the bare page URL so every ?rep= link shares one entry —
+        // but only when this really is our page. Serving another page fresh is
+        // fine; caching it as ours is the bug.
+        if (isOwnPage(req.url)) cache.put(PAGE, fresh.clone());
         return fresh;
       }
       throw new Error('bad response');
